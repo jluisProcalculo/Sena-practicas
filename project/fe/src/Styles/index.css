@@ -548,8 +548,8 @@
   }
 
   .text_icon_navbar {
-    color: white;
-    font-size: 12px;
+    color: var(--bg-secondary-color);
+    font-size: 11px;
   }
 }
 
