@@ -1,10 +1,10 @@
 import { useContext, useEffect, useRef } from "react";
 import CardImage from "./CardImage";
-import { skyfiPlatformApiArchives } from "../Services/archiveSkyfi";
+import { skyfiPlatformApiArchives } from "../Services/skyfi/archive/request";
 import { ContextGlobal } from "../Context/globalContext";
 import { Link, useParams } from "react-router-dom";
-import { continueCatalogArchives } from "../Services/archiveSkyfi";
-import { filters } from "../Utils/skifyfiltersArchiveData";
+import { continueCatalogArchives } from "../Services/skyfi/archive/request";
+import { filters, filtersCommercial } from "../Services/skyfi/archive/utils";
 
 const CommercialData = () => {
   const { state, dispatch } = useContext(ContextGlobal);
@@ -21,10 +21,10 @@ const CommercialData = () => {
   useEffect(() => {
     const filterCommercial = {
       aoi: params.aoi.replace("aoi=", ""), // se remplaza porque fue enviado con un parametro identificador "aoi="
-      resolutions: filters.resolutions,
+      resolutions: filtersCommercial.resolutions,
       productTypes: filters.productTypes,
       providers: filters.providers,
-      OpenData: filters.openData, // ToDo: cambiar a "false" y arreglar el OpenData por opendata cuando se tenga acceso a datos Commercial
+      openData: filtersCommercial.openData,
     };
     skyfiPlatformApiArchives(dispatch, filterCommercial);
   }, []);

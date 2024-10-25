@@ -1,5 +1,5 @@
 import axios from "axios";
-import apiKey_skyfi from "../../middleware/config.json";
+import apiKey_skyfi from "../../../../middleware/config.json";
 
 export const skyfiPlatformApiArchives = async (dispatch, filters) => {
     try {

@@ -1,10 +1,10 @@
 import { useContext, useEffect, useRef } from "react";
 import CardImage from "./CardImage";
-import { skyfiPlatformApiArchives } from "../Services/archiveSkyfi";
+import { skyfiPlatformApiArchives } from "../Services/skyfi/archive/request";
 import { ContextGlobal } from "../Context/globalContext";
 import { Link, useParams } from "react-router-dom";
-import { continueCatalogArchives } from "../Services/archiveSkyfi";
-import { filters } from "../Utils/skifyfiltersArchiveData";
+import { continueCatalogArchives } from "../Services/skyfi/archive/request";
+import { filters, filtersOpen } from "../Services/skyfi/archive/utils";
 
 const OpenData = () => {
   const { state, dispatch } = useContext(ContextGlobal);
@@ -21,10 +21,10 @@ const OpenData = () => {
   useEffect(() => {
     const filterOpen = {
       aoi: params.aoi.replace("aoi=", ""), // se remplaza porque fue enviado con un parametro identificador "aoi="
-      resolutions: filters.resolutionsOpen,
-      productTypes: filters.productTypesOpen,
+      resolutions: filtersOpen.resolutions,
+      productTypes: filtersOpen.productTypes,
       providers: filters.providers,
-      openData: filters.openData,
+      openData: filtersOpen.openData,
     };
     skyfiPlatformApiArchives(dispatch, filterOpen);
   }, []);

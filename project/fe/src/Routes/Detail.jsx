@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { skyfiPlatformApiGetArchive } from "../Services/archiveSkyfi";
+import { skyfiPlatformApiGetArchive } from "../Services/skyfi/archive/request";
 import DetailExplore from "../Components/DetailExplore";
 import { ContextGlobal } from "../Context/globalContext";
 
