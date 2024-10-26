@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { getBandCount } from "../Services/skyfi/archive/utils";
 
 const DetailExplore = ({ image }) => {
   const containerRef = useRef(null); // Referencia al contenedor con scroll
@@ -112,7 +113,7 @@ const DetailExplore = ({ image }) => {
       title: "Estimated cloud cover over image:",
       value: `${image.cloudCoveragePercent.toFixed(2)}%`,
     },
-    // {title: "Number of Bands:", value: ""}, // ToDo: determinar numero de bandas para todas las imagenes
+    {title: "Number of Bands:", value: `${getBandCount(image.productType, image.gsd)} bands`}, // ToDo: determinar numero de bandas para todas las imagenes
     {
       title: "File will be delivered in:",
       value: `${image.deliveryTimeHours.toFixed(0)}hrs (approx.)`,

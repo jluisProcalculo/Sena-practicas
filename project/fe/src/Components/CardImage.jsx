@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { routesExplore } from "../Utils/routes";
+import { getBandCount } from "../Services/skyfi/archive/utils";
 
 const CardImage = ({ image }) => {
   /**
@@ -92,6 +93,7 @@ const CardImage = ({ image }) => {
                 <img src="/cloud-sun.svg" alt="" width={24} />
                 {image.cloudCoveragePercent.toFixed(2)}%
               </p>
+              <p>{getBandCount(image.productType, image.gsd)} bands</p>
             </section>
           </section>
           <section className="price_container">
